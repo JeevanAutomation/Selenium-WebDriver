@@ -1,0 +1,85 @@
+HTML Code for the Dropdown
+-----------------------------
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hotel Empire</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        #order-form {
+            margin: 20px 0;
+        }
+        button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script>
+        function submitOrder() {
+            alert("Thanks for order, Visit again");
+        }
+    </script>
+</head>
+<body>
+    <h2>Order Your Favorite Dish</h2>
+    <form id="order-form">
+        <label for="empire">Select a dish:</label>
+        <select id="empire" name="empire">
+            <option value="grill_chicken">Grill Chicken</option>
+            <option value="hyd_biryani">Hyderabadi Biryani</option>
+            <option value="chicken_kabab">Chicken Kabab</option>
+            <option value="chicken_65">Chicken 65</option>
+            <option value="guntur_chicken">Guntur Chicken</option>
+            <option value="butter_chicken">Butter Chicken</option>
+            <option value="crab_fry">Crab Fry</option>
+            <option value="prawns">Prawns</option>
+            <option value="fish_fry">Fish Fry</option>
+            <option value="leg_soup">Leg Soup</option>
+        </select>
+        <br>
+        <button type="button" onclick="submitOrder()">Submit</button>
+    </form>
+</body>
+</html>
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Java Selenium Script
+====================
+
+
+package Selenium;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+public class Handling_dropdown {
+	public static void main(String[] args) throws Exception 
+	{
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "./software/chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("file:///D:/Selenium%20Grooming/Dropdown%20list.html");
+		WebElement dropdown = driver.findElement(By.id("empire"));
+		Select s=new Select(dropdown);
+		Thread.sleep(1000);
+		s.selectByVisibleText("Chicken Kabab");
+		WebElement sub = driver.findElement(By.xpath("//button"));
+        sub.click();
+	}
+
+}
