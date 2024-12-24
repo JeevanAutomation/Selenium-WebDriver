@@ -1,0 +1,32 @@
+package Selenium;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Download_popup {
+
+	public static void main(String[] args) throws Exception {
+		System.setProperty("webdriver.chrome.driver", "./software/chromedriver.exe");
+		WebDriver driver= new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.get("https://demoapps.qspiders.com/ui/download?sublist=0");
+		WebElement text = driver.findElement(By.id("writeArea"));
+		text.sendKeys("We handle download popup ");
+		Thread.sleep(1000);
+		WebElement rename = driver.findElement(By.id("fileName"));
+		rename.clear();
+		Thread.sleep(1000);
+		rename.sendKeys("Donload.txt");
+		Thread.sleep(1000);
+		WebElement btn = driver.findElement(By.id("downloadButton"));
+        btn.click();
+        Thread.sleep(2000);
+        driver.quit();
+	}
+
+}
