@@ -1,0 +1,30 @@
+package Selenium;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class File_Upload_popup 
+{
+	public static void main(String[] args) throws Exception 
+	{
+		System.setProperty("webdriver.chrome.driver", "./software/chromedriver.exe");
+		WebDriver driver= new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.get("file:///D:/Selenium%20Grooming/fileupload%20popup.html");
+		WebElement fileInput = driver.findElement(By.name("p1"));
+		Thread.sleep(1000);
+		fileInput.sendKeys("C:\\Users\\jeeva\\Downloads\\SHRE2005.pdf");
+		Thread.sleep(1000);
+		WebElement submitButton = driver.findElement(By.tagName("button"));
+        submitButton.click();
+        Thread.sleep(1000);
+		driver.quit();
+
+	}
+
+}
